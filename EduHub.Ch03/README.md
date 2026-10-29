@@ -28,10 +28,24 @@ EduHub.Tests/           Unit test lớp Application, mock repository bằng Moq
 
 ## Chạy
 
+### Visual Studio
+
+Mở file `EduHub.sln`, sau đó trong **Solution Explorer** nhấp chuột phải vào
+`EduHub.API` và chọn **Set as Startup Project**. Project `EduHub.API` là
+ASP.NET Core executable; các project còn lại là class library hoặc test project
+và không thể chạy trực tiếp.
+
+Có thể kiểm tra lại trong **Solution > Properties > Common Properties >
+Startup Project** rằng **Single startup project** đang là `EduHub.API`. Nhấn
+`F5` hoặc `Ctrl+F5` để chạy, rồi mở `/swagger` theo URL được Visual Studio
+hiển thị.
+
+### .NET CLI
+
 ```bash
-dotnet build EduHub.sln      # starter build được ngay (0 lỗi)
-dotnet test                  # ban đầu 4 test đỏ; làm xong TODO thì xanh
-dotnet run --project EduHub.API   # http://localhost:5000/swagger
+dotnet build EduHub.sln
+dotnet test
+dotnet run --project EduHub.API
 ```
 
 Sau khi thêm test thứ 5 (lấy CLB theo Id, mock bằng Moq), `dotnet test` phải báo 5 passed.
